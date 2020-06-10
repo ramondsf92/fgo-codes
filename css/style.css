@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'roboto-mono';
+    src: url('../fonts/RobotoMono-Regular.ttf');
+}
+
+* {
+    font-family: 'roboto-mono';
+    color: antiquewhite;
+}
+
+body {
+    background-image: linear-gradient(to right, #090979, #00d4ff);
+}
+
+.spoiler {
+    color: black;
+    background-color: black;
+}
+
+.spoiler:hover {
+    color: white;
+}

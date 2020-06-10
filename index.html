@@ -13,10 +13,11 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
 	</script>
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-	<div id="app">
+	<div id="app" class="d-flex flex-column justify-content-center">
 		<div class="container border">
 			<h1 class="mt-3 text-center">Fate/Grand Order Code Storage APP</h1>
 			<div class="alert alert-danger mt-3" role="alert">
@@ -35,7 +36,7 @@
 				<tbody>
 					<tr v-for="account in accounts">
 						<td>{{account.id}}</td>
-						<td>{{account.code}}</td>
+						<td><span class="spoiler">{{account.code}}</span></td>
 						<td>{{account.server}}</td>
 						<td>{{account.ssr}}</td>
 						<td>
