@@ -1,2 +1,4 @@
-# fgo-codes
- APP para fins de aprendizado de Vue.js
+# Fgo codes
+ Aplicação em Vue para fins de aprendizado. 
+
+ Aplicação CRUD usando Vue.js em single file para aprendizado do framework.

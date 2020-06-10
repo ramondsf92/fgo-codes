@@ -1,0 +1,23 @@
+{
+  "name": "fgo-codes",
+  "version": "1.0.0",
+  "description": "Aplicação em Vue para fins de aprendizado.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/.bin/http-server -a localhost -c-1"
+  },
+  "dependencies": {
+    "http-server": "^0.12.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramon-ferreira/Fgo-codes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramon-ferreira/Fgo-codes/issues"
+  },
+  "homepage": "https://github.com/ramon-ferreira/Fgo-codes#readme"
+}
