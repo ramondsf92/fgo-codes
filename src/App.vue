@@ -39,7 +39,7 @@
             <td>
               <div id="action-cell" class="d-flex justify-content-center mt-3">
                 <i data-toggle="tooltip" title="Editar" class="fas fa-edit mr-1"></i>
-                <i data-toggle="tooltip" title="Remover" class="fas fa-trash mr-1"></i>
+                <i data-toggle="tooltip" title="Remover" @click="deleteAccount(account.id)" class="fas fa-trash mr-1"></i>
               </div>
             </td>
           </tr>
@@ -57,37 +57,28 @@ export default {
   data() {
     return {
       title: "Códigos FGO",
-      accounts: null
+      accounts: null,
+      deletedId: null 
     };
   },
   methods: {
     getAccounts() {
       axios
-        .get("http://localhost:8080/json/accounts.json")
+        .get("http://localhost:3000/data")
         .then(json => (this.accounts = json.data));
     },
     postAccount(acc) {
       axios
-        .post("http://localhost:8080/json/accounts", acc)
+        .post("http://localhost:3000/data", acc)
         .then(response => console.log(response));
+    },
+    deleteAccount(id) {
+      axios.delete(`http://localhost:3000/data/${id}`)
+        .then(response => console.log(response))
     }
   },
   created() {
     this.getAccounts();
-    console.log("Foi");
-    this.postAccount({
-      id: 3,
-      code: "TesteAxiosComponent",
-      server: "NA",
-      ssr: 5,
-      notable: [
-        {
-          name: "Ramon",
-          level: 100,
-          npLvl: 5
-        }
-      ]
-    });
   }
 };
 </script>
