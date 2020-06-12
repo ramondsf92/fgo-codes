@@ -1,34 +1,6 @@
 {
   "data": [
     {
-      "code": "ABCDEFGHIJ",
-      "server": "JP",
-      "ssr": "5",
-      "notable": [
-        {
-          "name": "Musashi Summer",
-          "level": "92",
-          "npLvl": 1
-        },
-        {
-          "name": "Achilles",
-          "level": "60",
-          "npLvl": 1
-        },
-        {
-          "name": "Waver",
-          "level": "60",
-          "npLvl": 1
-        },
-        {
-          "name": "Hokusai Saber",
-          "level": "80",
-          "npLvl": "5"
-        }
-      ],
-      "id": 3
-    },
-    {
       "code": "12345ABCDE",
       "server": "NA",
       "ssr": "2",
@@ -45,24 +17,6 @@
         }
       ],
       "id": 5
-    },
-    {
-      "code": "TESTE",
-      "server": "JP",
-      "ssr": 1,
-      "notable": [
-        {
-          "name": "TESTE",
-          "level": "3",
-          "npLvl": "1"
-        },
-        {
-          "name": "TESTE2",
-          "level": "11",
-          "npLvl": 1
-        }
-      ],
-      "id": 6
     }
   ]
 }
