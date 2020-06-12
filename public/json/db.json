@@ -1,22 +1,50 @@
 {
   "data": [
     {
-      "code": "12345ABCDE",
+      "code": "TESTE1",
       "server": "NA",
-      "ssr": "2",
+      "ssr": 2,
       "notable": [
         {
           "name": "Miyamoto Musashi",
-          "level": "100",
-          "npLvl": "3"
+          "level": 100,
+          "npLvl": 3
         },
         {
           "name": "Amakusa Shirou Tokisada",
-          "level": "80",
+          "level": 80,
           "npLvl": 1
         }
       ],
       "id": 5
+    },
+    {
+      "code": "TESTE2",
+      "server": "JP",
+      "ssr": 5,
+      "notable": [
+        {
+          "name": "Musashi Summer",
+          "level": 92,
+          "npLvl": 1
+        },
+        {
+          "name": "Romulus Quirinus",
+          "level": 70,
+          "npLvl": 1
+        },
+        {
+          "name": "Achilles",
+          "level": 70,
+          "npLvl": 1
+        },
+        {
+          "name": "Hokusai Saber",
+          "level": 80,
+          "npLvl": 5
+        }
+      ],
+      "id": 6
     }
   ]
 }

@@ -5,9 +5,9 @@
       <div
         class="alert alert-danger mt-3"
         role="alert"
-      >Caution: the codes must be secret and the sharing is at your own risk.</div>
+      >Caution: the codes must be secret and the sharing them is at your own risk.</div>
       <div>
-        <button class="btn btn-success" @click="showForm = true">Add Account</button>
+        <button class="btn btn-success" @click="addNewAccount">Add Account</button>
       </div>
       <table class="mt-2 table">
         <thead>
@@ -38,7 +38,16 @@
             </td>
             <td>
               <div id="action-cell" class="d-flex justify-content-center mt-3">
-                <i data-toggle="tooltip" title="Edit" class="fas fa-edit mr-1"></i>
+                <i
+                  data-toggle="tooltip"
+                  title="Edit"
+                  @click="editAccount(account)"
+                  class="fas fa-edit mr-1"
+                ></i>
+                <!-- 
+                  V-if inside trash icon to make it shows only if there's more than 1 element in accounts.
+                  Otherwise, I don't want to remove it. In other words, I don't want to let the array empty.
+                -->
                 <i
                   v-if="accounts.length > 1"
                   data-toggle="tooltip"
@@ -56,8 +65,17 @@
       <div class="modal-overlay" v-if="showForm" @click="showForm = false"></div>
     </transition>
     <transition name="slide" appear>
-      <div class="form-modal" v-if="showForm">
+      <div class="form-modal" v-if="showForm && !isEditing">
         <Form />
+      </div>
+      <div class="form-modal" v-if="showForm && isEditing">
+        <Form
+          :propId="editedAccount.id"
+          :propCode="editedAccount.code"
+          :propServer="editedAccount.server"
+          :propSsr="editedAccount.ssr"
+          :propNotable="editedAccount.notable"
+        />
       </div>
     </transition>
   </div>
@@ -73,7 +91,9 @@ export default {
     return {
       title: "Fate Grand/Order Code Storage CRUD APP",
       accounts: null,
-      showForm: false
+      showForm: false,
+      isEditing: false,
+      editedAccount: null
     };
   },
   methods: {
@@ -86,6 +106,15 @@ export default {
       axios
         .delete(`http://localhost:3000/data/${id}`)
         .then(response => console.log(response));
+    },
+    editAccount(acc) {
+      this.editedAccount = acc;
+      this.isEditing = true;
+      this.showForm = true;
+    },
+    addNewAccount() {
+      this.isEditing = false
+      this.showForm = true
     }
   },
   created() {
