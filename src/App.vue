@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <div class="container border">
-      <h1 class="mt-3 text-center">Fate/Grand Order Code Storage APP</h1>
+      <h1 class="mt-3 text-center">{{ title }}</h1>
       <div
         class="alert alert-danger mt-3"
         role="alert"
       >Caution: the codes must be secret and the sharing is at your own risk.</div>
       <div>
-        <button class="btn btn-success">Add Account</button>
+        <button class="btn btn-success" @click="showForm = true">Add Account</button>
       </div>
       <table class="mt-2 table">
         <thead>
@@ -39,26 +39,36 @@
             <td>
               <div id="action-cell" class="d-flex justify-content-center mt-3">
                 <i data-toggle="tooltip" title="Editar" class="fas fa-edit mr-1"></i>
-                <i data-toggle="tooltip" title="Remover" @click="deleteAccount(account.id)" class="fas fa-trash mr-1"></i>
+                <i v-if="accounts.length > 1" data-toggle="tooltip" title="Remover" @click="deleteAccount(account.id)" class="fas fa-trash mr-1"></i>
               </div>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+    <transition name="fade" appear>
+      <div class="modal-overlay" v-if="showForm" @click="showForm = false">
+      </div>
+    </transition>
+    <transition name="slide" appear>
+      <div class="form-modal" v-if="showForm">
+        <Form />
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-
+import Form from "./components/Form"
 export default {
   name: "App",
+  components: { Form },
   data() {
     return {
-      title: "Códigos FGO",
+      title: "Fate Grand/Order Code Storage CRUD APP",
       accounts: null,
-      deletedId: null 
+      showForm: false
     };
   },
   methods: {
@@ -111,12 +121,56 @@ body {
   height: 100%;
 }
 
-thead,
-tbody {
-  text-align: center;
+ul {
+  list-style-type: square;
 }
 
-ul {
-  list-style-type: none;
+/* Style for modal */
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 998;
+  background-color: rgba(0, 0, 0, 0.5);
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.form-modal {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+
+  width: 100%;
+  max-width: 700px;
+  background-color: #FFF;
+  border-radius: 20px;
+
+  padding: 20px;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.5s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translateX(-100%) translateY(-100vh);
+
+}
+
 </style>
