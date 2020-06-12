@@ -13,11 +13,11 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Código</th>
-            <th>Servidor</th>
-            <th>Qtd. SSR</th>
-            <th>Servos Notáveis</th>
-            <th>Ações</th>
+            <th>Code</th>
+            <th>Server</th>
+            <th>SSR Amount</th>
+            <th>Notable Servants</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -38,8 +38,14 @@
             </td>
             <td>
               <div id="action-cell" class="d-flex justify-content-center mt-3">
-                <i data-toggle="tooltip" title="Editar" class="fas fa-edit mr-1"></i>
-                <i v-if="accounts.length > 1" data-toggle="tooltip" title="Remover" @click="deleteAccount(account.id)" class="fas fa-trash mr-1"></i>
+                <i data-toggle="tooltip" title="Edit" class="fas fa-edit mr-1"></i>
+                <i
+                  v-if="accounts.length > 1"
+                  data-toggle="tooltip"
+                  title="Remove"
+                  @click="deleteAccount(account.id)"
+                  class="fas fa-trash mr-1"
+                ></i>
               </div>
             </td>
           </tr>
@@ -47,8 +53,7 @@
       </table>
     </div>
     <transition name="fade" appear>
-      <div class="modal-overlay" v-if="showForm" @click="showForm = false">
-      </div>
+      <div class="modal-overlay" v-if="showForm" @click="showForm = false"></div>
     </transition>
     <transition name="slide" appear>
       <div class="form-modal" v-if="showForm">
@@ -60,7 +65,7 @@
 
 <script>
 import axios from "axios";
-import Form from "./components/Form"
+import Form from "./components/Form";
 export default {
   name: "App",
   components: { Form },
@@ -77,14 +82,10 @@ export default {
         .get("http://localhost:3000/data")
         .then(json => (this.accounts = json.data));
     },
-    postAccount(acc) {
-      axios
-        .post("http://localhost:3000/data", acc)
-        .then(response => console.log(response));
-    },
     deleteAccount(id) {
-      axios.delete(`http://localhost:3000/data/${id}`)
-        .then(response => console.log(response))
+      axios
+        .delete(`http://localhost:3000/data/${id}`)
+        .then(response => console.log(response));
     }
   },
   created() {
@@ -156,7 +157,9 @@ ul {
 
   width: 100%;
   max-width: 700px;
-  background-color: #FFF;
+  max-height: 700px;
+  overflow: auto;
+  background-color: #fff;
   border-radius: 20px;
 
   padding: 20px;
@@ -170,7 +173,5 @@ ul {
 .slide-enter,
 .slide-leave-to {
   transform: translateX(-100%) translateY(-100vh);
-
 }
-
 </style>

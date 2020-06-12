@@ -1,6 +1,6 @@
 <template>
-  <div class="form">
-    <form>
+  <div class="container">
+    <form method="POST">
       <div class="form-group">
         <label class="text-primary" for="code">Code</label>
         <input
@@ -34,43 +34,45 @@
       </div>
       <label for="inputNotable" class="text-primary">Notable Servants</label>
       <div class="formNotable">
-        <div class="form-group">
-          <div class="form-group">
+        <div v-for="(servo, i) in notable" class="row" :key="i">
+          <div class="col-6">
             <label for="servantName" class="text-primary">Name</label>
             <input
               type="text"
-              class="form-control col-6"
-              id="input-servant"
-              v-model="notable.name"
+              class="form-control"
+              v-model="notable[i].name"
               placeholder="Insert Servant Name"
             />
           </div>
-          <div class="form-group">
+          <div class="col-2">
             <label for="servantLevel" class="text-primary">Level</label>
-            <input
-              type="number"
-              class="form-control col-3"
-              id="input-servant-level"
-              v-model="notable.level"
-            />
+            <input type="number" class="form-control" v-model="notable[i].level" />
           </div>
-          <div class="form-group">
+          <div class="col-2">
             <label for="servantNp" class="text-primary">NP Level</label>
-            <input
-              type="number"
-              class="form-control col-2"
-              id="input-servent-np"
-              v-model="notable.npLvl"
-            />
+            <input type="number" class="form-control" v-model="notable[i].npLvl" />
+          </div>
+          <div class="col-2">
+            <button
+              v-if="i == notable.length - 1"
+              data-toggle="tooltip"
+              title="Add more notable Servants"
+              class="btn btn-success btn-addServant"
+              @click="inserirNotable"
+            >+</button>
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Salvar</button>
+      <div class="mt-2">
+        <button type="submit" class="btn btn-primary align-self-center" @click="postAccount">Salvar</button>
+      </div>
     </form>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Form",
   data() {
@@ -87,12 +89,40 @@ export default {
       ]
     };
   },
-  methods: {}
+  methods: {
+    mostrarDados(e) {
+      e.preventDefault();
+      console.log({
+        code: this.code,
+        server: this.server,
+        ssr: this.ssr,
+        notable: this.notable
+      });
+    },
+    inserirNotable(e) {
+      e.preventDefault();
+      this.notable.push({
+        name: "",
+        level: 0,
+        npLvl: 1
+      });
+    },
+    postAccount() {
+      axios
+        .post("http://localhost:3000/data", {
+          code: this.code,
+          server: this.server,
+          ssr: this.ssr,
+          notable: this.notable
+        })
+        .then(response => console.log(response));
+    }
+  }
 };
 </script>
 
 <style>
-.formNotable {
-  padding-left: 40px;
+.btn-addServant {
+  margin-top: 31px;
 }
 </style>
