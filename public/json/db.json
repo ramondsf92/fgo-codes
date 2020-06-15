@@ -45,6 +45,34 @@
         }
       ],
       "id": 6
+    },
+    {
+      "code": "PRINCIPAL",
+      "server": "NA",
+      "ssr": 3,
+      "notable": [
+        {
+          "name": "Ishtar",
+          "level": 90,
+          "npLvl": 1
+        },
+        {
+          "name": "Ereshkigal",
+          "level": 70,
+          "npLvl": 1
+        },
+        {
+          "name": "Waver",
+          "level": 50,
+          "npLvl": 1
+        },
+        {
+          "name": "Sakamoto Ryouma",
+          "level": 70,
+          "npLvl": 1
+        }
+      ],
+      "id": 7
     }
   ]
 }

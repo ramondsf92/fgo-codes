@@ -24,7 +24,7 @@
           <tr v-for="account in accounts" :key="account.id">
             <td>{{account.id}}</td>
             <td>
-              <span class="spoiler">{{account.code}}</span>
+              {{account.code}}
             </td>
             <td>{{account.server}}</td>
             <td>{{account.ssr}}</td>
@@ -113,8 +113,8 @@ export default {
       this.showForm = true;
     },
     addNewAccount() {
-      this.isEditing = false
-      this.showForm = true
+      this.isEditing = false;
+      this.showForm = true;
     }
   },
   created() {
@@ -202,5 +202,9 @@ ul {
 .slide-enter,
 .slide-leave-to {
   transform: translateX(-100%) translateY(-100vh);
+}
+
+i {
+  cursor: pointer;
 }
 </style>
