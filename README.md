@@ -1,9 +1,9 @@
 # fgo-codes-v2
 
-[x] Create components
-[x] Work on styles
-[ ] Integrate database
-[ ] Mobile version (soon) 
+- [x] Create components
+- [x] Work on styles
+- [ ] Integrate database
+- [ ] Mobile version (soon) 
 
 ## Project setup
 ```
