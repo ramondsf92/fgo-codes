@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "code": "TESTE1",
+      "code": "EXEMPLO1",
       "server": "NA",
       "ssr": 4,
       "notable": [
@@ -29,7 +29,7 @@
       "id": 5
     },
     {
-      "code": "TESTE2",
+      "code": "EXEMPLO2",
       "server": "JP",
       "ssr": 5,
       "notable": [
@@ -57,7 +57,7 @@
       "id": 6
     },
     {
-      "code": "PRINCIPAL",
+      "code": "EXEMPLO3",
       "server": "NA",
       "ssr": 3,
       "notable": [

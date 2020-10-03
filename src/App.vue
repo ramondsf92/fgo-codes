@@ -183,14 +183,14 @@ ul {
 
 .form-modal {
   position: fixed;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
 
   width: 100%;
-  max-width: 700px;
-  max-height: 700px;
+  max-width: 750px;
+  max-height: 500px;
   overflow: auto;
   background-color: #fff;
   border-radius: 20px;
