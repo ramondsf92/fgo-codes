@@ -2,12 +2,14 @@
   <div id="app">
     <div class="container border">
       <h1 class="mt-3 text-center">{{ title }}</h1>
-      <div
-        class="alert alert-danger mt-3"
-        role="alert"
-      >Caution: the codes must be secret and the sharing them is at your own risk.</div>
+      <div class="alert alert-danger mt-3" role="alert">
+        Caution: the codes must be secret and the sharing them is at your own
+        risk.
+      </div>
       <div>
-        <button class="btn btn-success" @click="addNewAccount">Add Account</button>
+        <button class="btn btn-success" @click="addNewAccount">
+          Add Account
+        </button>
       </div>
       <table class="mt-2 table">
         <thead>
@@ -22,18 +24,15 @@
         </thead>
         <tbody>
           <tr v-for="account in accounts" :key="account.id">
-            <td>{{account.id}}</td>
-            <td>
-              {{account.code}}
-            </td>
-            <td>{{account.server}}</td>
-            <td>{{account.ssr}}</td>
+            <td>{{ account.id }}</td>
+            <td>{{ account.code }}</td>
+            <td>{{ account.server }}</td>
+            <td>{{ account.ssr }}</td>
             <td>
               <ul>
-                <li
-                  v-for="servant in account.notable"
-                  :key="servant.name"
-                >{{servant.name}}-{{servant.level}}-NP{{servant.npLvl}}</li>
+                <li v-for="servant in account.notable" :key="servant.name">
+                  {{ servant.name }}-{{ servant.level }}-NP{{ servant.npLvl }}
+                </li>
               </ul>
             </td>
             <td>
@@ -62,7 +61,11 @@
       </table>
     </div>
     <transition name="fade" appear>
-      <div class="modal-overlay" v-if="showForm" @click="showForm = false"></div>
+      <div
+        class="modal-overlay"
+        v-if="showForm"
+        @click="showForm = false"
+      ></div>
     </transition>
     <transition name="slide" appear>
       <div class="form-modal" v-if="showForm && !isEditing">
@@ -84,6 +87,7 @@
 <script>
 import axios from "axios";
 import Form from "./components/Form";
+
 export default {
   name: "App",
   components: { Form },
@@ -93,19 +97,19 @@ export default {
       accounts: null,
       showForm: false,
       isEditing: false,
-      editedAccount: null
+      editedAccount: null,
     };
   },
   methods: {
     getAccounts() {
       axios
         .get("http://localhost:3000/data")
-        .then(json => (this.accounts = json.data));
+        .then((json) => (this.accounts = json.data));
     },
     deleteAccount(id) {
       axios
         .delete(`http://localhost:3000/data/${id}`)
-        .then(response => console.log(response));
+        .then((response) => console.log(response));
     },
     editAccount(acc) {
       this.editedAccount = acc;
@@ -115,11 +119,11 @@ export default {
     addNewAccount() {
       this.isEditing = false;
       this.showForm = true;
-    }
+    },
   },
   created() {
     this.getAccounts();
-  }
+  },
 };
 </script>
 

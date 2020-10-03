@@ -3,7 +3,7 @@
     {
       "code": "TESTE1",
       "server": "NA",
-      "ssr": 2,
+      "ssr": 4,
       "notable": [
         {
           "name": "Miyamoto Musashi",
@@ -13,6 +13,16 @@
         {
           "name": "Amakusa Shirou Tokisada",
           "level": 80,
+          "npLvl": 1
+        },
+        {
+          "name": "Napoleon",
+          "level": 70,
+          "npLvl": 1
+        },
+        {
+          "name": "Jeanne Archer",
+          "level": 70,
           "npLvl": 1
         }
       ],
