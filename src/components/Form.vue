@@ -8,7 +8,9 @@
           class="form-control col-6"
           id="input-code"
           v-model="code"
+          oninput="javascript: this.value = this.value.length > this.maxlength ? this.value.slice(0, this.maxlength) : this.value"
           placeholder="Insert the code"
+          maxlength="10"
         />
         <small id="codeHelp" class="form-text text-muted"
           >Make sure your code is bound at the game before saving it</small
@@ -82,6 +84,7 @@
           type="submit"
           id="save-button"
           class="btn btn-primary align-self-center"
+          :disabled="code.length < 10"
           @click="saveAccount"
         >
           Save
@@ -135,6 +138,11 @@ export default {
         npLvl: 1,
       });
     },
+    limitInputCode() {
+      this.code =
+        this.code.length <= 10 ? this.code : this.code.substring(0, 10);
+    },
+
     saveAccount(e) {
       e.preventDefault();
       console.log(e.target);
@@ -179,12 +187,11 @@ export default {
     }
   },
 };
+// const codeInput = document.getElementById("input-code");
 
-codeInput = document.getElementById("code-input");
-
-if (codeInput.value.length < 10) {
-  document.getElementById("save-button").disabled = false;
-}
+// if (codeInput.value.length < 10) {
+//   document.getElementById("save-button").disabled = false;
+// }
 </script>
 
 <style>
