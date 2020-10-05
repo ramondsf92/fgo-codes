@@ -10,10 +10,9 @@
           v-model="code"
           placeholder="Insert the code"
         />
-        <small
-          id="codeHelp"
-          class="form-text text-muted"
-        >Make sure your code is bound at the game before saving it</small>
+        <small id="codeHelp" class="form-text text-muted"
+          >Make sure your code is bound at the game before saving it</small
+        >
       </div>
       <div class="form-group">
         <label class="text-primary" for="inputServer">Server</label>
@@ -26,11 +25,16 @@
       </div>
       <div class="form-group">
         <label for="inputSSR" class="text-primary">SSR Amount</label>
-        <input type="number" class="form-control col-3" id="input-ssr" v-model.number="ssr" />
-        <small
-          id="ssrHelp"
-          class="form-text text-muted"
-        >Insert SSR amount ignoring NP level, you will insert on notable SSR.</small>
+        <input
+          type="number"
+          class="form-control col-3"
+          id="input-ssr"
+          v-model.number="ssr"
+        />
+        <small id="ssrHelp" class="form-text text-muted"
+          >Insert SSR amount ignoring NP level, you will insert on notable
+          SSR.</small
+        >
       </div>
       <label for="inputNotable" class="text-primary">Notable Servants</label>
       <div class="formNotable">
@@ -46,11 +50,19 @@
           </div>
           <div class="col-2">
             <label for="servantLevel" class="text-primary">Level</label>
-            <input type="number" class="form-control" v-model.number="notable[i].level" />
+            <input
+              type="number"
+              class="form-control"
+              v-model.number="notable[i].level"
+            />
           </div>
           <div class="col-2">
             <label for="servantNp" class="text-primary">NP Level</label>
-            <input type="number" class="form-control" v-model.number="notable[i].npLvl" />
+            <input
+              type="number"
+              class="form-control"
+              v-model.number="notable[i].npLvl"
+            />
           </div>
           <div class="col-2">
             <button
@@ -59,12 +71,21 @@
               title="Add more notable Servants"
               class="btn btn-success btn-addServant"
               @click="inserirNotable"
-            >+</button>
+            >
+              +
+            </button>
           </div>
         </div>
       </div>
       <div class="mt-2">
-        <button type="submit" class="btn btn-primary align-self-center" @click="saveAccount">Save</button>
+        <button
+          type="submit"
+          id="save-button"
+          class="btn btn-primary align-self-center"
+          @click="saveAccount"
+        >
+          Save
+        </button>
       </div>
     </form>
   </div>
@@ -80,7 +101,7 @@ export default {
     propCode: String,
     propServer: String,
     propSsr: Number,
-    propNotable: Array
+    propNotable: Array,
   },
   data() {
     return {
@@ -91,9 +112,9 @@ export default {
         {
           name: "",
           level: 0,
-          npLvl: 1
-        }
-      ]
+          npLvl: 1,
+        },
+      ],
     };
   },
   methods: {
@@ -103,7 +124,7 @@ export default {
         code: this.code,
         server: this.server,
         ssr: this.ssr,
-        notable: this.notable
+        notable: this.notable,
       });
     },
     inserirNotable(e) {
@@ -111,7 +132,7 @@ export default {
       this.notable.push({
         name: "",
         level: 0,
-        npLvl: 1
+        npLvl: 1,
       });
     },
     saveAccount(e) {
@@ -123,20 +144,20 @@ export default {
             code: this.code,
             server: this.server,
             ssr: this.ssr,
-            notable: this.notable
+            notable: this.notable,
           })
-          .then(response => console.log(response));
+          .then((response) => console.log(response));
       } else {
         axios
           .post("http://localhost:3000/data", {
             code: this.code,
             server: this.server,
             ssr: this.ssr,
-            notable: this.notable
+            notable: this.notable,
           })
-          .then(response => console.log(response));
+          .then((response) => console.log(response));
       }
-    }
+    },
   },
   created() {
     if (this.propCode) {
@@ -152,12 +173,18 @@ export default {
         {
           name: "",
           level: 0,
-          npLvl: 1
-        }
+          npLvl: 1,
+        },
       ];
     }
-  }
+  },
 };
+
+codeInput = document.getElementById("code-input");
+
+if (codeInput.value.length < 10) {
+  document.getElementById("save-button").disabled = false;
+}
 </script>
 
 <style>
