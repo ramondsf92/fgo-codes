@@ -1,64 +1,75 @@
 <template>
   <div id="app">
-    <div class="container border">
-      <h1 class="mt-3 text-center">{{ title }}</h1>
-      <div class="alert alert-danger mt-3" role="alert">
-        Caution: the codes must be secret and the sharing them is at your own
-        risk.
+    <div class="container">
+      <div class="jumbotron jumbotron-black shadow">
+        <h1 class="mt-1">{{ title }}</h1>
+        <p class="lead">
+          An app where you can store your Fate/Grand Order bind codes with no
+          fear.
+        </p>
+        <div>
+          <button class="btn btn-success mt-3" @click="addNewAccount">
+            Add Account
+          </button>
+          <div class="alert alert-danger mt-3" role="alert">
+            Caution: the codes must be secret and the sharing them is at your
+            own risk.
+          </div>
+        </div>
       </div>
-      <div>
-        <button class="btn btn-success" @click="addNewAccount">
-          Add Account
-        </button>
-      </div>
-      <table class="mt-2 table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Code</th>
-            <th>Server</th>
-            <th>SSR Amount</th>
-            <th>Notable Servants</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="account in accounts" :key="account.id">
-            <td>{{ account.id }}</td>
-            <td>{{ account.code }}</td>
-            <td>{{ account.server }}</td>
-            <td>{{ account.ssr }}</td>
-            <td>
-              <ul>
-                <li v-for="servant in account.notable" :key="servant.name">
-                  {{ servant.name }}-{{ servant.level }}-NP{{ servant.npLvl }}
-                </li>
-              </ul>
-            </td>
-            <td>
-              <div id="action-cell" class="d-flex justify-content-center mt-3">
-                <i
-                  data-toggle="tooltip"
-                  title="Edit"
-                  @click="editAccount(account)"
-                  class="fas fa-edit mr-1"
-                ></i>
-                <!-- 
+      <div class="container border">
+        <table class="mt-2 table servant-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Code</th>
+              <th>Server</th>
+              <th>SSR Amount</th>
+              <th>Notable Servants</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="account in accounts" :key="account.id">
+              <td>{{ account.id }}</td>
+              <td>{{ account.code }}</td>
+              <td>{{ account.server }}</td>
+              <td>{{ account.ssr }}</td>
+              <td>
+                <ul>
+                  <li v-for="servant in account.notable" :key="servant.name">
+                    {{ servant.name }}-{{ servant.level }}-NP{{ servant.npLvl }}
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <div
+                  id="action-cell"
+                  class="d-flex justify-content-center mt-3"
+                >
+                  <i
+                    data-toggle="tooltip"
+                    title="Edit"
+                    @click="editAccount(account)"
+                    class="fas fa-edit mr-1"
+                  ></i>
+                  <!-- 
                   V-if inside trash icon to make it shows only if there's more than 1 element in accounts.
                   Otherwise, I don't want to remove it. In other words, I don't want to let the array empty.
                 -->
-                <i
-                  v-if="accounts.length > 1"
-                  data-toggle="tooltip"
-                  title="Remove"
-                  @click="deleteAccount(account.id)"
-                  class="fas fa-trash mr-1"
-                ></i>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                  <i
+                    v-if="accounts.length > 1"
+                    data-toggle="tooltip"
+                    title="Remove"
+                    @click="deleteAccount(account.id)"
+                    class="fas fa-trash mr-1"
+                  ></i>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <transition name="fade" appear>
       <div
@@ -138,8 +149,22 @@ export default {
   color: antiquewhite;
 }
 
+.jumbotron-black {
+  background-image: url("https://cutewallpaper.org/21/ultimate-background/new-jumbotron-background-Gold-Bond-Ultimate.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 body {
-  background-image: linear-gradient(to right, #090979, #00d4ff);
+  /* background-image: linear-gradient(to right, #090979, #00d4ff); */
+  background-image: url("https://i.redd.it/aaib8cgjd9u21.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.servant-table {
+  background-color: #002a5b;
 }
 
 .spoiler {

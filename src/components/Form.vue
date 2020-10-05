@@ -72,6 +72,12 @@
               data-toggle="tooltip"
               title="Add more notable Servants"
               class="btn btn-success btn-addServant"
+              :disabled="
+                notable[i].name == '' ||
+                  notable[i].level == 0 ||
+                  notable[i].npLvl < 1 ||
+                  notable[i].npLvl > 5
+              "
               @click="inserirNotable"
             >
               +
@@ -84,7 +90,7 @@
           type="submit"
           id="save-button"
           class="btn btn-primary align-self-center"
-          :disabled="code.length < 10"
+          :disabled="code.length < 10 || notable.length < 2"
           @click="saveAccount"
         >
           Save
@@ -138,10 +144,6 @@ export default {
         npLvl: 1,
       });
     },
-    limitInputCode() {
-      this.code =
-        this.code.length <= 10 ? this.code : this.code.substring(0, 10);
-    },
 
     saveAccount(e) {
       e.preventDefault();
@@ -187,11 +189,6 @@ export default {
     }
   },
 };
-// const codeInput = document.getElementById("input-code");
-
-// if (codeInput.value.length < 10) {
-//   document.getElementById("save-button").disabled = false;
-// }
 </script>
 
 <style>
