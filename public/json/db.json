@@ -1,34 +1,6 @@
 {
   "data": [
     {
-      "code": "EXEMPLO1",
-      "server": "NA",
-      "ssr": 4,
-      "notable": [
-        {
-          "name": "Miyamoto Musashi",
-          "level": 100,
-          "npLvl": 3
-        },
-        {
-          "name": "Amakusa Shirou Tokisada",
-          "level": 80,
-          "npLvl": 1
-        },
-        {
-          "name": "Napoleon",
-          "level": 70,
-          "npLvl": 1
-        },
-        {
-          "name": "Jeanne Archer",
-          "level": 70,
-          "npLvl": 1
-        }
-      ],
-      "id": 5
-    },
-    {
       "code": "EXEMPLO2",
       "server": "JP",
       "ssr": 5,
@@ -83,6 +55,29 @@
         }
       ],
       "id": 7
+    },
+    {
+      "code": "CODEXAMPLE",
+      "server": "JP",
+      "ssr": 3,
+      "notable": [
+        {
+          "name": "Castoria",
+          "level": 90,
+          "npLvl": 1
+        },
+        {
+          "name": "Kiara Summer",
+          "level": 80,
+          "npLvl": 1
+        },
+        {
+          "name": "Altera",
+          "level": 1,
+          "npLvl": 1
+        }
+      ],
+      "id": 8
     }
   ]
 }
